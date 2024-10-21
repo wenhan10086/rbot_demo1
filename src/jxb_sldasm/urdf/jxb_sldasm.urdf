@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.6.0-4-g7f85cfe  Build Version: 1.6.7995.38578
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="jxb_sldasm">
+    <link name="world"/>
+    <joint name="fixed" type="fixed">
+        <parent link="world"/>
+        <child link="base_link"/>
+</joint>
+    <link name="base_link">
+        <inertial>
+            <origin xyz="0.00707733281285925 0.00390163519095444 0.0487248145542146" rpy="0 0 0" />
+            <mass value="0.0000645528747878921" />
+            <inertia ixx="0.0957396760294433" ixy="-2.58295144860551E-04" ixz="2.49382285641521E-06" iyy="0.0161499845822829" iyz="8.27662153337809E-05" izz="0.0858151890450393" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://jxb_sldasm/meshes/base_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://jxb_sldasm/meshes/base_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <link name="j1_Link">
+        <inertial>
+            <origin xyz="-0.000467634014051053 -0.0284246972648927 0.0206555227855105" rpy="0 0 0" />
+            <mass value="0.00000503529246369942" />
+            <inertia ixx="2.84372510677827E-03" ixy="1.99420221191551E-9" ixz="-2.9146517555499E-07" iyy="2.75681662923528E-03" iyz="6.628531647362E-04" izz="2.51555208533708E-03" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://jxb_sldasm/meshes/j1_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://jxb_sldasm/meshes/j1_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="j1" type="continuous">
+        <origin xyz="-0.00371277173823002 -0.0487683768362331 0.0654949990001021" rpy="-1.57079632679489 0 -1.73190275212092" />
+        <parent link="base_link" />
+        <child link="j1_Link" />
+        <axis xyz="0 1 0" />
+    </joint>
+    <link name="j2_Link">
+        <inertial>
+            <origin xyz="-5.25984108712407E-07 -0.0189831158015428 0.0392180438175903" rpy="0 0 0" />
+            <mass value="0.00000468335738815202" />
+            <inertia ixx="2.62800581707767E-03" ixy="-3.00150398338351E-08" ixz="1.82573542271984E-07" iyy="2.50074053197019E-03" iyz="6.26678281223961E-04" izz="2.54824789081549E-03" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://jxb_sldasm/meshes/j2_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://jxb_sldasm/meshes/j2_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="j2" type="continuous">
+        <origin xyz="0 -0.0360050009998999 0.0320793825378335" rpy="0 0 -0.0932539917190856" />
+        <parent link="j1_Link" />
+        <child link="j2_Link" />
+        <axis xyz="0 0 -1" />
+    </joint>
+    <link name="j3_Link">
+        <inertial>
+            <origin xyz="-0.000813529048631828 -0.0965325373980729 -0.00376628112122888" rpy="0 0 0" />
+            <mass value="0.00000587742012930213" />
+            <inertia ixx="4.00663353174676E-03" ixy="-1.91961560417403E-08" ixz="-7.78318310715432E-06" iyy="2.79401427021461E-03" iyz="-6.26676992113216E-04" izz="3.88800338742538E-03" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://jxb_sldasm/meshes/j3_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://jxb_sldasm/meshes/j3_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="j3" type="continuous">
+        <origin xyz="0 -0.0376021687262774 0.047120617462167" rpy="-3.14159265330962 1.47911274323965 -3.14159265330844" />
+        <parent link="j2_Link" />
+        <child link="j3_Link" />
+        <axis xyz="0 1 0" />
+    </joint>
+    <link name="j4_Link">
+        <inertial>
+            <origin xyz="-0.000926762993110702 -0.0392758870005305 -0.0591773900447444" rpy="0 0 0" />
+            <mass value="0.00000770130248054421" />
+            <inertia ixx="4.28784255583072E-03" ixy="1.95920500209058E-07" ixz="7.80761191412381E-06" iyy="3.07320922869266E-03" iyz="-6.10023531828584E-04" izz="4.35250142962103E-03" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://jxb_sldasm/meshes/j4_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://jxb_sldasm/meshes/j4_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="j4" type="continuous">
+        <origin xyz="0 -0.135397831273731 -0.0129530722227053" rpy="0 0 0.250121033232269" />
+        <parent link="j3_Link" />
+        <child link="j4_Link" />
+        <axis xyz="0 0 -1" />
+    </joint>
+    <link name="j5_Link">
+        <inertial>
+            <origin xyz="0.000468469291555085 -0.00764696062652798 -0.0116640457997296" rpy="0 0 0" />
+            <mass value="0.00000502376036372406" />
+            <inertia ixx="2.84690401468513E-03" ixy="-3.98548667923441E-08" ixz="-2.28580213803622E-07" iyy="2.74050699121556E-03" iyz="6.57903698093498E-02" izz="2.50836286519278E-03" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://jxb_sldasm/meshes/j5_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://jxb_sldasm/meshes/j5_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="j5" type="continuous">
+        <origin xyz="0 -0.172999999999992 0" rpy="0 0 0.100392846686112" />
+        <parent link="j4_Link" />
+        <child link="j5_Link" />
+        <axis xyz="0 0 1" />
+    </joint>
+    <link name="j6_Link">
+        <inertial>
+            <origin xyz="-0.000422063116782723 -0.0169962730691598 0.0103381753596599" rpy="0 0 0" />
+            <mass value="0.00000559234056903561" />
+            <inertia ixx="2.83280936496896E-03" ixy="-3.31282048526111E-07" ixz="-4.18923643613072E-09" iyy="2.50888981999624E-03" iyz="6.40111246103047E-04" izz="2.78821645724564E-0" />
+        </inertial>
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://jxb_sldasm/meshes/j6_Link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://jxb_sldasm/meshes/j6_Link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="j6" type="continuous">
+        <origin xyz="0 -0.0438226071391495 0.008953072222701" rpy="3.14159265358967 -0.799218945065399 -3.14159265358971" />
+        <parent link="j5_Link" />
+        <child link="j6_Link" />
+        <axis xyz="0 -1 0" />
+    </joint>
+    <transmission name="trans_j1">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="j1">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="j1_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_j2">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="j2">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="j2_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_j3">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="j3">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="j3_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_j4">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="j4">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="j4_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_j5">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="j5">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="j5_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_j6">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="j6">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="j6_motor">
+            <hardwareInterface>hardware_interface/EffortJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/</robotNamespace>
+        </plugin>
+    </gazebo>
+</robot>
+

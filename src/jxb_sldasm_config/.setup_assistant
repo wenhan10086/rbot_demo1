@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: jxb_sldasm
+    relative_path: urdf/jxb_sldasm.urdf
+    xacro_args: ""
+  SRDF:
+    relative_path: config/jxb_sldasm.srdf
+  CONFIG:
+    author_name: wenhan
+    author_email: wenhan10086@gmail.com
+    generated_timestamp: 1729219608
