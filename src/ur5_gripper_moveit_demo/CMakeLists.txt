@@ -156,9 +156,13 @@ target_link_libraries(moveit_fk_demo ${catkin_LIBRARIES})
 add_executable(moveit_ik_demo src/moveit_ik_demo.cpp)
 target_link_libraries(moveit_ik_demo ${catkin_LIBRARIES})
 
+add_executable(moveit_cartesian_demo src/moveit_cartesian_demo.cpp)
+target_link_libraries(moveit_cartesian_demo ${catkin_LIBRARIES})
+
 install(TARGETS
   moveit_fk_demo
   moveit_ik_demo
+  moveit_cartesian_demo
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
