@@ -28,7 +28,7 @@ limitations under the License.
 #include <cv_bridge/cv_bridge.h>
 #include <tf/transform_listener.h>
 
-#include "probot_grasping/vision_manager.h"
+#include "vision_manager.h"
 
 class GraspingDemo
 {

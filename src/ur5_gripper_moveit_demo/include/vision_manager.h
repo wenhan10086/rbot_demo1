@@ -23,6 +23,10 @@ limitations under the License.
 #include <opencv2/opencv.hpp>
 #include "opencv2/highgui/highgui.hpp"
 
+#include <ros/ros.h>
+#include <cv_bridge/cv_bridge.h>
+#include <image_transport/image_transport.h>
+
 class VisionManager
 {
   public:
@@ -32,7 +36,7 @@ class VisionManager
    * @param[in]  length   The length of the table
    * @param[in]  breadth  The breadth of the table
    */
-	VisionManager(float length, float breadth);
+	VisionManager(ros::NodeHandle n_, float length, float breadth);
 	/**
 	 * @brief      Gets the 2d location of object in camera frame
 	 *
@@ -40,7 +44,13 @@ class VisionManager
 	 * @param      x     x postion of the object
 	 * @param      y     y position of the object
 	 */
-	void get2DLocation(cv::Mat img, float &x, float &y);
+	void get2DLocation(const sensor_msgs::ImageConstPtr &msg, float &x, float &y);
+	/**
+	 * @brief      imageCb is called when a new image is received from the camera
+	 *
+	 * @param[in]  msg   Image received as a message
+	 */
+	void imageCb(const sensor_msgs::ImageConstPtr &msg);
 
   private:
 	/**
@@ -49,7 +59,7 @@ class VisionManager
  	 * @param      pixel_x  postion of the object in x-pixels
  	 * @param      pixel_y  positino of the object in y-pixels
  	 */
-	void detect2DObject(float &pixel_x, float &pixel_y, cv::Rect &tablePos);
+	void detect2DObject(const sensor_msgs::ImageConstPtr &msg, float &pixel_x, float &pixel_y, cv::Rect &tablePos);
 	/**
 	 * @brief      convertToMM converts pixel measurement to metric
 	 *
@@ -60,7 +70,7 @@ class VisionManager
 	/**
 	 * @brief      detectTable isolates the table to get pixel to metric conversion
 	 */
-	void detectTable(cv::Rect &tablePos);
+	void detectTable(const sensor_msgs::ImageConstPtr &msg, cv::Rect &tablePos);
 	/**
 	 * @brief pixels per mm in x for the camera
 	 */
@@ -93,10 +103,14 @@ class VisionManager
 	 * @brief centre of the image in pixels y
 	 */
 	float img_centre_y_;
-	/**
-	 * @brief curr_img is the image currently being processed
-	 */
-	cv::Mat curr_img;
+
+    cv_bridge::CvImagePtr cv_ptr_;
+
+  	image_transport::ImageTransport it_;
+
+	image_transport::Subscriber image_sub_;
+	image_transport::Publisher image1_pub_;
+	image_transport::Publisher image2_pub_;
 };
 
 #endif

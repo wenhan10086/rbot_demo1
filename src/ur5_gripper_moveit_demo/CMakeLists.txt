@@ -8,11 +8,19 @@ project(ur5_gripper_moveit_demo)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
+  cv_bridge
+  image_transport
   moveit_core
+  moveit_ros_planning
   moveit_ros_planning_interface
   roscpp
   rospy
+  sensor_msgs
+  std_msgs
+  tf
 )
+
+find_package(OpenCV 4.2 REQUIRED)
 
 ## System dependencies are found with CMake's conventions
 # find_package(Boost REQUIRED COMPONENTS system)
@@ -106,7 +114,7 @@ find_package(catkin REQUIRED COMPONENTS
 catkin_package(
 #  INCLUDE_DIRS include
 #  LIBRARIES ur5_gripper_moveit_demo
- CATKIN_DEPENDS moveit_core moveit_ros_planning_interface roscpp rospy
+ CATKIN_DEPENDS moveit_core moveit_ros_planning_interface roscpp rospy cv_bridge image_transport moveit_ros_planning sensor_msgs std_msgs tf
 #  DEPENDS system_lib
 )
 
@@ -117,10 +125,13 @@ catkin_package(
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+  include
   ${catkin_INCLUDE_DIRS}
 )
-
+# add_library(visonMnaager
+#       src/vision_manager.cpp
+#       )
+# target_link_libraries(visonMnaager ${OpenCV_LIBS})   
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/ur5_gripper_moveit_demo.cpp
@@ -159,10 +170,21 @@ target_link_libraries(moveit_ik_demo ${catkin_LIBRARIES})
 add_executable(moveit_cartesian_demo src/moveit_cartesian_demo.cpp)
 target_link_libraries(moveit_cartesian_demo ${catkin_LIBRARIES})
 
+# add_executable(graspingDemo src/grasping_demo.cpp)
+# target_link_libraries(graspingDemo visonManager ${catkin_LIBRARIES})
+
+add_executable(image_converter src/image_converter.cpp)
+target_link_libraries(image_converter ${catkin_LIBRARIES} ${OpenCV_LIBS})
+
+add_executable(visonManager src/vision_manager.cpp)
+target_link_libraries(visonManager ${catkin_LIBRARIES} ${OpenCV_LIBS})
+
 install(TARGETS
+  # graspingDemo
   moveit_fk_demo
   moveit_ik_demo
   moveit_cartesian_demo
+  visonManager
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
