@@ -18,7 +18,7 @@ limitations under the License.
 
 GraspingDemo::GraspingDemo(ros::NodeHandle n_, float pregrasp_x, float pregrasp_y, float pregrasp_z, float length, float breadth) :
     it_(n_), 
-    armgroup("manipulator"), 
+    armgroup("ur5_arm"), 
     grippergroup("gripper"), 
     vMng_(length, breadth)
 {

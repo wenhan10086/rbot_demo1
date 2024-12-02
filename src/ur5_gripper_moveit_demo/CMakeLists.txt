@@ -128,10 +128,10 @@ include_directories(
   include
   ${catkin_INCLUDE_DIRS}
 )
-# add_library(visonMnaager
-#       src/vision_manager.cpp
-#       )
-# target_link_libraries(visonMnaager ${OpenCV_LIBS})   
+add_library(visonManager
+      src/vision_manager.cpp
+      )
+target_link_libraries(visonManager ${OpenCV_LIBS})   
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
 #   src/${PROJECT_NAME}/ur5_gripper_moveit_demo.cpp
@@ -170,21 +170,21 @@ target_link_libraries(moveit_ik_demo ${catkin_LIBRARIES})
 add_executable(moveit_cartesian_demo src/moveit_cartesian_demo.cpp)
 target_link_libraries(moveit_cartesian_demo ${catkin_LIBRARIES})
 
-# add_executable(graspingDemo src/grasping_demo.cpp)
-# target_link_libraries(graspingDemo visonManager ${catkin_LIBRARIES})
+add_executable(graspingDemo src/grasping_demo.cpp)
+target_link_libraries(graspingDemo visonManager ${catkin_LIBRARIES})
 
-add_executable(image_converter src/image_converter.cpp)
-target_link_libraries(image_converter ${catkin_LIBRARIES} ${OpenCV_LIBS})
+# add_executable(image_converter src/image_converter.cpp)
+# target_link_libraries(image_converter ${catkin_LIBRARIES} ${OpenCV_LIBS})
 
-add_executable(visonManager src/vision_manager.cpp)
-target_link_libraries(visonManager ${catkin_LIBRARIES} ${OpenCV_LIBS})
+# add_executable(visonManager src/vision_manager.cpp)
+# target_link_libraries(visonManager ${catkin_LIBRARIES} ${OpenCV_LIBS})
 
 install(TARGETS
-  # graspingDemo
+  graspingDemo
   moveit_fk_demo
   moveit_ik_demo
   moveit_cartesian_demo
-  visonManager
+  # visonManager
   ARCHIVE DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   LIBRARY DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION}
   RUNTIME DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
